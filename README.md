@@ -2,6 +2,8 @@
 
 Network call test 
 
+![Download the APK](app-release.apk)
+
 ![](example.png)
 
 
