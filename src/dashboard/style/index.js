@@ -5,6 +5,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
+    loaderContainer: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+    errorText: { color: 'white', textAlign: 'center' },
 });
 
 export default styles;

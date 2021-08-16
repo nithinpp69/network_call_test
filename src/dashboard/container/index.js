@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, ActivityIndicator, FlatList, Text } from 'react-native';
 import styles from '@src/dashboard/style';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { getStarWarsList, getStarWarsDetails } from '../services';
@@ -42,12 +42,34 @@ const Dashboard = () => {
         setShowDetails(false);
     };
 
+    const listEmptyComponent = () => {
+        if (star_wars?.hasError)
+            return (
+                <View style={styles.loaderContainer}>
+                    <Text style={styles.errorText}>Something went wrong.</Text>
+                </View>
+            )
+        return (
+            <View style={styles.loaderContainer}>
+                <Text style={styles.errorText}>No items available.</Text>
+            </View>
+        )
+    }
+
+    if (star_wars?.loading)
+        return (
+            <View style={styles.loaderContainer}>
+                <ActivityIndicator size={'large'} color={'white'} />
+            </View>
+        )
+
     return (
         <View style={styles.container}>
             <FlatList
                 data={star_wars?.response?.results || []}
                 showsVerticalScrollIndicator={false}
                 renderItem={renderStarWars}
+                ListEmptyComponent={listEmptyComponent}
                 keyExtractor={item => item.url}
             />
             <CharacterDetailsModal
