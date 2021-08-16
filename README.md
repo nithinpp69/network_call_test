@@ -2,7 +2,7 @@
 
 Network call test 
 
-![Download the APK](app-release.apk)
+[Download the APK](https://github.com/nithinpp69/network_call_test/raw/main/app-release.apk)
 
 ![](example.png)
 
